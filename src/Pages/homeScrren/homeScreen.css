@@ -16,18 +16,19 @@
   display: block;
 }
 
+/* Section 2 Css  */
 
 /* Section -2 Css  start */
 
+/* General layout for large screens remains unchanged */
 .new-section {
   display: flex;
   height: 100vh;
   overflow: hidden;
-  gap: 5px
+  gap: 5px;
 }
 
 .left-fixed-section {
-
   flex: 1;
   padding: 20px;
   position: sticky;
@@ -48,9 +49,7 @@
   font-size: 50px !important;
   text-align: end;
   font-weight: 300;
-
 }
-
 
 .left-fixed-section p {
   font-size: 20px !important;
@@ -62,15 +61,13 @@
   padding-top: 70px;
 }
 
-
 .left-side-paintBtn {
   background-color: black;
   color: white;
   width: 30%;
   font-size: 18px;
+  margin-bottom: 90px;
 }
-
-/* right part */
 
 .right-scrollable-section {
   flex: 1;
@@ -88,10 +85,6 @@
   padding-top: 68px !important;
 }
 
-
-/* rightside small slider css  */
-
-
 .smallSlider-division,
 h4 {
   font-family: "Montserrat", sans-serif;
@@ -103,16 +96,12 @@ h4 {
   position: relative;
   display: inline-block;
   margin-top: 20px !important;
-
 }
 
 h4:hover {
   color: rgb(105, 103, 103);
 }
 
-
-
-/* small slider css */
 .small-image-slider {
   position: relative;
   display: flex;
@@ -136,7 +125,6 @@ h4:hover {
   width: 100%;
   height: auto;
   display: block;
-
 }
 
 .prev-button,
@@ -178,6 +166,115 @@ h4:hover {
   right: 10px;
 }
 
+/* Responsive styling starts here */
+
+/* Medium screen (Tablets, etc.) */
+@media only screen and (max-width: 1024px) {
+  .new-section {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+
+  .left-fixed-section {
+    position: relative;
+    padding: 10px;
+    height: auto;
+    justify-content: flex-start;
+    font-size: 18px;
+  }
+
+  .left-fixed-section h2 {
+    font-size: 40px !important;
+    text-align: center;
+  }
+
+  .left-fixed-section p {
+    font-size: 18px !important;
+  }
+
+  .leftside-btn {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .left-side-paintBtn {
+    width: 50%;
+    font-size: 16px;
+  }
+
+  .right-scrollable-section {
+    padding: 20px;
+    padding-top: 20px !important;
+    font-size: 16px !important;
+  }
+
+  .small-image-slider {
+    width: 100%;
+  }
+}
+
+/* Small screen (Mobile phones, etc.) */
+@media only screen and (max-width: 768px) {
+  .new-section {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+
+  .left-fixed-section {
+    padding: 10px;
+    position: relative;
+    height: auto;
+    justify-content: flex-start;
+    font-size: 16px;
+  }
+
+  .left-fixed-section h2 {
+    font-size: 30px !important;
+    text-align: center;
+  }
+
+  .left-fixed-section p {
+    font-size: 16px !important;
+    text-align: justify;
+  }
+
+  .leftside-btn {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .left-side-paintBtn {
+    width: 80%;
+    font-size: 14px;
+  }
+
+  .right-scrollable-section {
+    padding: 30px;
+    padding-top: 15px !important;
+    font-size: 14px !important;
+  }
+
+  .smallSlider-division,
+  h4 {
+    font-size: 16px !important;
+  }
+
+  .small-slider-content {
+    width: 200%;
+  }
+
+  .small-slider-item {
+    flex: 0 0 50%; /* Each image takes up 50% of the slider width */
+  }
+
+  .small-slider-item img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 /* Section -2 Css  end--------- */
 
 /* Section -3 Css  start-------*/
@@ -189,38 +286,38 @@ h4:hover {
   overflow: hidden;
   width: 100%;
   gap: 40px;
-  /* Adjust gap as needed */
   margin-top: 20px !important;
 }
 
-/* Left Section: Sticky setup */
 .review-left {
   flex: 1;
-  padding: 20px;
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 50vh !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #f9f9f9;
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
   z-index: 1;
-
+  width: 90% !important;
 }
 
-/* Heading styling for the left section */
 .review-left h2 {
-  font-size: 40px;
-  line-height: 1.2;
+  font-size: 50px !important;
+  line-height: 1.2 !important;
   text-align: end;
   font-weight: 300;
-  color: #333;
+  color: #000000;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-transform: uppercase;
 }
 
-/* Button setup in the left section */
 .review-button-container {
+  height: 90vh !important;
+
   margin-top: 20px;
   text-align: end;
 }
@@ -328,15 +425,13 @@ h4:hover {
   background: rgba(0, 0, 0, 0.7);
 }
 
-
-
-
 .review-slider-title {
   font-size: 1.5rem;
 }
 
 .star-rating {
   display: flex;
+  margin-right: 2rem !important;
 }
 
 .star {
@@ -344,4 +439,79 @@ h4:hover {
   color: rgb(238, 143, 11);
   margin-left: 0.1rem;
   margin-top: 10px;
+}
+
+/* Responsive styles for small and medium screens */
+@media (max-width: 1024px) {
+  .review-container {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .review-left {
+    position: relative;
+    height: auto;
+    flex: none;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .review-left h2 {
+    font-size: 30px !important;
+    text-align: left !important;
+  }
+
+  .review-button-container {
+    text-align: start;
+  }
+
+  .review-button {
+    font-size: 16px;
+  }
+
+  .review-right {
+    padding: 17px;
+    font-size: 16px;
+    max-height: none;
+  }
+
+  .review-slider-title {
+    font-size: 1.2rem;
+  }
+
+  .star {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .review-left {
+    position: relative;
+    height: auto;
+    flex: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    margin-left: 20px !important;
+  }
+
+  .review-button-container {
+    height: 0vh !important;
+    /* margin-top: 20px; */
+    /* text-align: end; */
+  }
+
+  .review-left h2 {
+    font-size: 24px;
+  }
+
+  .review-slider-title {
+    font-size: 1rem;
+  }
+
+  .star {
+    font-size: 1.4rem;
+  }
 }

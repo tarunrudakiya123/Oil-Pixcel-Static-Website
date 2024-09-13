@@ -17,26 +17,26 @@ const SocialIcons = () => {
     <div className="social-icons">
       <a href="https://www.facebook.com" aria-label="Facebook">
         <FontAwesomeIcon
+          id="socialIcon"
           icon={faFacebook}
-          style={{ color: "black", fontSize: "20px" }}
         />
       </a>
       <a href="https://www.instagram.com" aria-label="Instagram">
         <FontAwesomeIcon
+          id="socialIcon"
           icon={faInstagram}
-          style={{ color: "black", fontSize: "20px" }}
         />
       </a>
       <a href="https://www.pinterest.com" aria-label="Pinterest">
         <FontAwesomeIcon
+          id="socialIcon"
           icon={faPinterest}
-          style={{ color: "black", fontSize: "20px" }}
         />
       </a>
       <a href="https://www.youtube.com" aria-label="YouTube">
         <FontAwesomeIcon
+          id="socialIcon"
           icon={faYoutube}
-          style={{ color: "black", fontSize: "20px" }}
         />
       </a>
     </div>

@@ -37,8 +37,8 @@ const Slider = ({ items }) => {
             </div>
 
             <div className="slider-text">
-              <p>{item?.content}</p>
-              <button className="masterButton">{item?.buttonText}</button>
+              <p className="imageTitle">{item?.content}</p>
+              <button className="masterButton contentButton">{item?.buttonText}</button>
             </div>
           </div>
         ))}

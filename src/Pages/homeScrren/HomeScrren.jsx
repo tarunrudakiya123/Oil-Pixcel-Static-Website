@@ -3,7 +3,7 @@ import Slider from "../../components/slider/Slider";
 import "./homeScreen.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 import { Tune } from "@mui/icons-material";
 
 //small slider component--
@@ -12,7 +12,7 @@ const SmallSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
-    if (currentIndex < images?.length - 3) {
+    if (currentIndex < images?.length - 1) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
@@ -34,7 +34,7 @@ const SmallSlider = ({ images }) => {
       </button>
       <div
         className="small-slider-content"
-        style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images?.map((image, index) => (
           <div key={index} className="small-slider-item">
@@ -45,7 +45,7 @@ const SmallSlider = ({ images }) => {
       <button
         className="next-button"
         onClick={goToNext}
-        disabled={currentIndex >= images.length - 3}
+        disabled={currentIndex >= images.length - 1}
       >
         &#8250;
       </button>
@@ -71,7 +71,7 @@ const ReviewVideoSlider = ({ videos }) => {
 
   const handleVideoPlay = (index) => {
     playerRefs.current.forEach((player, idx) => {
-      if (player && idx !== index) player.seekTo(0); // Resets other videos
+      if (player && idx !== index) player.seekTo(0);
     });
   };
 
@@ -90,7 +90,7 @@ const ReviewVideoSlider = ({ videos }) => {
           className="review-slider-content"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
-            transition: 'transform 0.5s ease',
+            transition: "transform 0.5s ease",
           }}
         >
           {videos?.map((video, index) => (
@@ -276,17 +276,9 @@ const HomeScreen = () => {
         {/* Left Section */}
         <div className="review-left">
           <h2>
-            Our
+            Our customer
             <br />
-            customer
-            <br />
-            stories
-            <br />
-            near
-            <br />
-            to our
-            <br />
-            heart
+            stories near to our heart
           </h2>
 
           <div className="review-button-container">

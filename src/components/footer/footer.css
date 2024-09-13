@@ -1,118 +1,144 @@
 .footer {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px !important;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-title {
+  margin-bottom: 50px;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+.footer-title::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 2px;
+  background-color: #3d3a3a;
+  margin: 20px auto 0;
+}
+
+.footerform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-input {
+  text-align: center;
+  color: black;
+  transition: background-color 0.6s;
+}
+
+.custom-input:focus {
+  color: black !important;
+}
+
+.custom-focused-label {
+  color: black !important;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.submitButton {
+  margin-bottom: 30px !important;
+}
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+/* ---footer nav css */
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 90%;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.footer-nav a,
+.social-icons a {
+  color: #000000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  word-spacing: 2px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.social-icons {
+  margin-top: 40px !important;
+}
+
+.footer-social {
+  margin-bottom: 60px;
+}
+
+.social-icons a {
+  margin: 0 20px;
+}
+
+#socialIcon {
+  transition: all 0.3s linear;
+  font-size: 18px !important;
+  /* background-color: #c7a17a; */
+  padding: 5px;
+  border-radius: 50%;
+  color: rgb(0, 0, 0) !important;
+}
+
+.footer-bottom p {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 13px !important;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer-nav a:hover,
+.footer-social a:hover {
+  color: #c33c3c;
+}
+
+#socialIcon:hover {
+  background-color: #000000 !important;
+  color: wheat !important;
+  scale: 3d (1);
+}
+
+@media (max-width: 768px) {
+  .footer {
     width: 100%;
-    height: 100vh;
+    height: 140vh;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 20px !important;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.footer-title {
-    margin-bottom: 50px;
-    position: relative;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-}
-
-.footer-title::after {
-    content: "";
-    display: block;
-    width: 160px;
-    height: 2px;
-    background-color: #3d3a3a;
-    margin: 20px auto 0;
-}
-
-.footerform {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.custom-input {
-    text-align: center;
-    color: black;
-    transition: background-color 0.6s;
-}
-
-.custom-input:focus {
-    color: black !important;
-}
-
-
-.custom-focused-label {
-    color: black !important;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-}
-
-.submitButton{
-    margin-bottom: 30px !important;
-}
-.success-message {
-    color: green;
-    margin-top: 10px;
-}
-/* ---footer nav css */
-
-.footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    width: 90%;
-    padding: 0px !important;
-    margin: 0px !important;
-}
-
-.footer-nav a, 
-.social-icons a {
-    color: #000;
-    text-decoration: none; 
-    text-transform: uppercase; 
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
-    word-spacing: 2px ;
-    line-height: 20px;
-}
-
-.social-icons{
-    margin-top: 40px !important;
-}
-
-.footer-social {
-    margin-bottom: 60px;
-}
-
-
-
-.social-icons a {
-    margin: 0 20px;
-}
-
-.footer-bottom p {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 13px !important;
-    font-family: "Montserrat", sans-serif;
-}
-
-.footer-nav a:hover,
-.footer-social a:hover {
-    color: #c33c3c;
+  }
 }
