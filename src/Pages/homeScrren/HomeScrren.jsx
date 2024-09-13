@@ -3,6 +3,8 @@ import Slider from "../../components/slider/Slider";
 import "./homeScreen.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ReactPlayer from 'react-player';
+import { Tune } from "@mui/icons-material";
 
 //small slider component--
 
@@ -53,7 +55,7 @@ const SmallSlider = ({ images }) => {
 
 const ReviewVideoSlider = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const videoRefs = useRef([]);
+  const playerRefs = useRef([]);
 
   const goToNext = () => {
     if (currentIndex < videos?.length - 1) {
@@ -68,10 +70,9 @@ const ReviewVideoSlider = ({ videos }) => {
   };
 
   const handleVideoPlay = (index) => {
-    videoRefs.current.forEach((video, idx) => {
-      if (video && idx !== index) video.pause();
+    playerRefs.current.forEach((player, idx) => {
+      if (player && idx !== index) player.seekTo(0); // Resets other videos
     });
-    if (videoRefs.current[index]) videoRefs.current[index].play();
   };
 
   return (
@@ -80,6 +81,7 @@ const ReviewVideoSlider = ({ videos }) => {
         className="review-prev-button"
         onClick={goToPrev}
         disabled={currentIndex === 0}
+        aria-label="Previous video"
       >
         <ArrowBackIcon />
       </button>
@@ -88,7 +90,7 @@ const ReviewVideoSlider = ({ videos }) => {
           className="review-slider-content"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
-            transition: "transform 0.5s ease",
+            transition: 'transform 0.5s ease',
           }}
         >
           {videos?.map((video, index) => (
@@ -97,12 +99,13 @@ const ReviewVideoSlider = ({ videos }) => {
               className="review-slider-item"
               onClick={() => handleVideoPlay(index)}
             >
-              <video
-                ref={(el) => (videoRefs.current[index] = el)}
-                src={video?.src}
-                controls={false}
-                autoPlay
-                muted
+              <ReactPlayer
+                ref={(el) => (playerRefs.current[index] = el)}
+                url={video?.src}
+                playing={currentIndex === index}
+                controls={true}
+                width="100%"
+                height="100%"
                 className="review-slider-video"
               />
             </div>
@@ -112,7 +115,8 @@ const ReviewVideoSlider = ({ videos }) => {
       <button
         className="review-next-button"
         onClick={goToNext}
-        disabled={currentIndex >= videos.length - 1}
+        disabled={currentIndex >= videos?.length - 1}
+        aria-label="Next video"
       >
         <ArrowForwardIcon />
       </button>
@@ -122,16 +126,13 @@ const ReviewVideoSlider = ({ videos }) => {
 
 const videoData = [
   {
-    src: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
-    // poster: "https://via.placeholder.com/640x360?text=Video+1",
+    src: "https://youtu.be/5FJaP75YUhY?si=oX3eNa0NEKtpyvao",
   },
   {
-    src: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
-    // poster: "https://via.placeholder.com/640x360?text=Video+2",
+    src: "https://youtu.be/i3_NQSk09Cc?si=mMBFgearqMykcvmx",
   },
   {
-    src: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
-    // poster: "https://via.placeholder.com/640x360?text=Video+3",
+    src: "https://youtu.be/dyDJgg_pBTM?si=PVCfFF9Gbgsgwtb0",
   },
 ];
 
@@ -301,7 +302,7 @@ const HomeScreen = () => {
             <div className="d-flex align-item-center justify-content-between">
               <h4 className="review-slider-title">Nisha Panchal</h4>
 
-              <div className="star-rating">
+              <div className="star-rating me-3">
                 {[...Array(5)].map((_, index) => (
                   <span key={index} className="star">
                     &#9733;
