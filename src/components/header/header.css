@@ -1,0 +1,171 @@
+.headerMain {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transition: transform 0.4s ease-in-out;
+  transform: translateY(0);
+}
+
+.headerMain.hideHeader {
+  transform: translateY(-100%);
+}
+
+.headerMain.showHeader {
+  transform: translateY(0);
+}
+
+.headerMain .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerMain .logo a {
+  display: block;
+}
+
+.headerMain .logo a img {
+  max-width: 150px;
+  height: auto;
+}
+
+.headerMain .headRight {
+  display: flex;
+  align-items: center;
+}
+
+.headerMain .headRight .paintIcon {
+  margin-right: 20px;
+}
+
+.headerMain .headRight .paintIcon .orderNow {
+  color: black;
+  text-decoration: none;
+}
+
+.headerMain {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: #fff;
+  padding: 15px;
+  z-index: 999;
+}
+
+.headRight {
+  margin-top: 2px;
+}
+
+
+
+.menuIcon {
+  margin: 2px 15px;
+  width: 33px;
+  height: 33px;
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  transition: background .3s ease;
+
+}
+
+.menuIcon:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 50%;
+  transform: scale3d(0, 0, 0);
+  transition: transform .6s cubic-bezier(.19, 1, .22, 1);
+  z-index: 1;
+  border: 1px solid #000000;
+}
+
+.menuIcon:hover:before {
+  transform: scale3d(1.05, 1.05, 1.05);
+}
+
+.menuIcon span {
+  width: 18px;
+  height: 1.5px;
+  background: #fff;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  margin: auto;
+  z-index: 2;
+  transition: background .3s ease;
+}
+
+.menuIcon:hover span {
+  background: #000;
+}
+
+.menuIcon span:before,
+.menuIcon span:after {
+  content: '';
+  width: 18px;
+  height: 1.5px;
+  background: #fff;
+  position: absolute;
+  border-radius: 2px;
+  transition: background .3s ease;
+}
+
+.menuIcon span:before {
+  top: -6px;
+}
+
+.menuIcon span:after {
+  bottom: -6px;
+}
+
+.menuIcon:hover span:before,
+.menuIcon:hover span:after {
+  background: #000;
+}
+
+.menuIcon.activeMenu span {
+  width: 1px;
+  transition: width .3s ease;
+}
+
+
+
+
+
+.headerMain .headRight .menuIcon span:before,
+.headerMain .headRight .menuIcon span:after {
+  content: "";
+  background-color: #fbfbfb !important;
+  display: block;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.headerMain .headRight .menuIcon span:before {
+  top: -10px;
+}
+
+.headerMain .headRight .menuIcon span:after {
+  top: 10px;
+}

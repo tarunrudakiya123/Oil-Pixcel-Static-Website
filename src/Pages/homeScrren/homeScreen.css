@@ -1,0 +1,347 @@
+.home-screen {
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.home-screen.overlay-open .overlay {
+  display: block;
+}
+
+
+/* Section -2 Css  start */
+
+.new-section {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  gap: 5px
+}
+
+.left-fixed-section {
+
+  flex: 1;
+  padding: 20px;
+  position: sticky;
+  background-attachment: fixed !important;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.left-fixed-section h2 {
+  font-size: 50px !important;
+  text-align: end;
+  font-weight: 300;
+
+}
+
+
+.left-fixed-section p {
+  font-size: 20px !important;
+  text-align: justify;
+}
+
+.leftside-btn {
+  text-align: right;
+  padding-top: 70px;
+}
+
+
+.left-side-paintBtn {
+  background-color: black;
+  color: white;
+  width: 30%;
+  font-size: 18px;
+}
+
+/* right part */
+
+.right-scrollable-section {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px !important;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-align: justify;
+  padding-top: 68px !important;
+}
+
+
+/* rightside small slider css  */
+
+
+.smallSlider-division,
+h4 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  position: relative;
+  display: inline-block;
+  margin-top: 20px !important;
+
+}
+
+h4:hover {
+  color: rgb(105, 103, 103);
+}
+
+
+
+/* small slider css */
+.small-image-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.small-slider-content {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 300%;
+}
+
+.small-slider-item {
+  flex: 0 0 33.333%;
+  box-sizing: border-box;
+}
+
+.small-slider-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #555;
+}
+
+.prev-button:disabled,
+.next-button:disabled {
+  cursor: not-allowed;
+  background-color: #777;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+/* Section -2 Css  end--------- */
+
+/* Section -3 Css  start-------*/
+
+/* Review Container */
+.review-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  gap: 40px;
+  /* Adjust gap as needed */
+  margin-top: 20px !important;
+}
+
+/* Left Section: Sticky setup */
+.review-left {
+  flex: 1;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f9f9f9;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  z-index: 1;
+
+}
+
+/* Heading styling for the left section */
+.review-left h2 {
+  font-size: 40px;
+  line-height: 1.2;
+  text-align: end;
+  font-weight: 300;
+  color: #333;
+}
+
+/* Button setup in the left section */
+.review-button-container {
+  margin-top: 20px;
+  text-align: end;
+}
+
+.review-button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.review-button:hover {
+  background-color: #444;
+}
+
+/* Right Section: Scrollable setup */
+.review-right {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #fff;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  text-align: justify;
+  max-height: 100vh;
+}
+
+/* Slider section and text styling */
+.review-slider-container {
+  margin-top: 20px;
+}
+
+.review-slider-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #333;
+}
+
+/* Slider styling */
+.review-video-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.review-slider-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.review-slider-content {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.review-slider-item {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+.review-slider-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-prev-button,
+.review-next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.review-prev-button {
+  left: 10px;
+}
+
+.review-next-button {
+  right: 10px;
+}
+
+.review-prev-button:hover,
+.review-next-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+.review-slider-title {
+  font-size: 1.5rem;
+}
+
+.star-rating {
+  display: flex;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: rgb(238, 143, 11);
+  margin-left: 0.1rem;
+  margin-top: 10px;
+}

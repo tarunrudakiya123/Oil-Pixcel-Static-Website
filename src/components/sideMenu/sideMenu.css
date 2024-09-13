@@ -1,0 +1,120 @@
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.sidenav.open {
+  width: 60%;
+}
+
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.closebtn {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.closebtn .close-icon {
+  font-size: 20px;
+}
+
+.closebtn:hover {
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid black
+}
+
+.closebtn:hover .close-icon {
+  color: #000;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 70px;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.menu-items a {
+  padding: 13px 0;
+  font-size: 30px;
+  color: #000;
+  text-decoration: none;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.menu-items a:hover {
+  color: #f39c12;
+}
+
+.contact-info {
+  text-align: right;
+  padding: 40px;
+  margin-top: 25px;
+}
+
+.contact-info h2 {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+
+
+}
+
+.contact-info p {
+  margin: 5px 0;
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.social-icons {
+  /* display: flex; */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-icons i {
+  font-size: 20px;
+  cursor: pointer;
+  color: #000;
+  transition: 0.3s;
+  margin: 5px;
+}
+
+.social-icons i:hover {
+  color: #f39c12;
+}

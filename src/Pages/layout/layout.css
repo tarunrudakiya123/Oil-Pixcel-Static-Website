@@ -1,0 +1,26 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .home-screen.overlay-open .overlay {
+    display: block;
+  }
+
+  .backTotopBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 1000;
+    background: black;
+    padding: 10px;
+    border-radius: 50% !important;
+    border: none;
+    cursor: pointer;
+  }
+  
