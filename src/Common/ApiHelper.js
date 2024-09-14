@@ -2,7 +2,7 @@ import axios from "axios";
 
 class ApiHelper {
   constructor() {
-    this.baseURL = "https://localhost:5100";
+    this.baseURL = process.env.VITE_BACKEND_PATH;
   }
 
   ProductDetails() {
