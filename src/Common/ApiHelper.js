@@ -2,7 +2,7 @@ import axios from "axios";
 
 class ApiHelper {
   constructor() {
-    this.baseURL = process.env.VITE_BACKEND_PATH;
+    this.baseURL = process.env.REACT_APP_BACKEND_URL;
   }
 
   ProductDetails() {
