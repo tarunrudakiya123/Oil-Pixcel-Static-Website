@@ -4,6 +4,12 @@ import "./slider.css";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import EastIcon from "@mui/icons-material/East";
 
+function extractTextFromHTML(htmlString) {
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = htmlString;
+  return tempDiv.textContent || tempDiv.innerText;
+}
+
 const Slider = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -22,33 +28,50 @@ const Slider = ({ items }) => {
   useEffect(() => {
     const interval = setInterval(handleNext, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [items]);
 
   return (
     <div className="slider-container">
       <div
         className="slider"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+          transition: "transform 0.5s ease-in-out",
+        }}
       >
         {items?.map((item, index) => (
           <div className="slider-content" key={index}>
             <div className="slider-item">
-              <img className="img-fluid" src={item?.img} alt="slider-img" />
+              <img
+                className="img-fluid"
+                src={item?.FeatureImages?.url || "fallback-image-url"} 
+                alt={item?.title || "Slider image"}
+              />
             </div>
 
             <div className="slider-text">
-              <p className="imageTitle">{item?.content}</p>
-              <button className="masterButton contentButton">{item?.buttonText}</button>
+              <p className="imageTitle">{item?.title}</p>
+              <button className="masterButton contentButton">
+                {extractTextFromHTML(item?.description || "")}
+              </button>
             </div>
           </div>
         ))}
       </div>
 
       <div className="button-control">
-        <button className="slider-button prev" onClick={handlePrev}>
+        <button
+          className="slider-button prev"
+          onClick={handlePrev}
+          aria-label="Previous slide"
+        >
           <KeyboardBackspaceIcon />
         </button>
-        <button className="slider-button next" onClick={handleNext}>
+        <button
+          className="slider-button next"
+          onClick={handleNext}
+          aria-label="Next slide"
+        >
           <EastIcon />
         </button>
       </div>

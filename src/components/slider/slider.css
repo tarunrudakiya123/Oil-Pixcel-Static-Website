@@ -60,7 +60,7 @@
 /* Button styles */
 .button-control {
   position: absolute;
-  bottom: 10px;
+  bottom: 57px !important;
   left: 54% !important;
   transform: translateX(-50%);
   display: flex;
@@ -196,6 +196,8 @@
   .slider-button {
     width: 35px !important;
     height: 35px !important;
-    font-size: 16px !;
+    font-size: 16px !important;
   }
 }
+
+

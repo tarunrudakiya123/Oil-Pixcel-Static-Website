@@ -1,3 +1,4 @@
+/* Base styles for all screen sizes */
 .sidenav {
   height: 100%;
   width: 0;
@@ -48,7 +49,7 @@
 .closebtn:hover {
   background-color: #ffffff;
   color: #000;
-  border: 1px solid black
+  border: 1px solid black;
 }
 
 .closebtn:hover .close-icon {
@@ -70,8 +71,6 @@
   text-decoration: none;
   transition: 0.3s;
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
 
 .menu-items a:hover {
@@ -87,22 +86,16 @@
 .contact-info h2 {
   font-size: 30px;
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 300;
-
-
 }
 
 .contact-info p {
   margin: 5px 0;
   font-size: 17px;
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
 
 .social-icons {
-  /* display: flex; */
   gap: 10px;
   margin-top: 10px;
 }
@@ -117,4 +110,60 @@
 
 .social-icons i:hover {
   color: #f39c12;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  /* Medium screens: 768px to 992px */
+  .sidenav.open {
+    width: 80%;
+  }
+
+  .menu-items a {
+    font-size: 24px;
+    padding: 10px 0;
+  }
+
+  .contact-info h2 {
+    font-size: 26px;
+  }
+
+  .contact-info p {
+    font-size: 15px;
+  }
+
+  .social-icons i {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Small screens: less than 768px */
+  .sidenav.open {
+    width: 100%;
+  }
+
+  .menu-items {
+    padding: 20px 40px;
+  }
+
+  .menu-items a {
+    font-size: 20px;
+  }
+
+  .contact-info {
+    padding: 20px;
+  }
+
+  .contact-info h2 {
+    font-size: 22px;
+  }
+
+  .contact-info p {
+    font-size: 14px;
+  }
+
+  .social-icons i {
+    font-size: 16px;
+  }
 }

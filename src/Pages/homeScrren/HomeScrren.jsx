@@ -1,12 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "../../components/slider/Slider";
 import "./homeScreen.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ReactPlayer from "react-player";
-import { Tune } from "@mui/icons-material";
+import { Loader } from "./../../components/loader/Loader";
+import apiHelper from "../../Common/ApiHelper.js";
+import MessageBox from "../../components/massageBox/MessageBox";
 
 //small slider component--
+
+function extractTextFromHTML(htmlString) {
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = htmlString;
+  return tempDiv.textContent || tempDiv.innerText;
+}
 
 const SmallSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,14 +46,14 @@ const SmallSlider = ({ images }) => {
       >
         {images?.map((image, index) => (
           <div key={index} className="small-slider-item">
-            <img src={image?.img} alt={`Slider ${index + 1}`} />
+            <img src={image?.url} alt={`Slider ${index + 1}`} />
           </div>
         ))}
       </div>
       <button
         className="next-button"
         onClick={goToNext}
-        disabled={currentIndex >= images.length - 1}
+        disabled={currentIndex >= images?.length - 1}
       >
         &#8250;
       </button>
@@ -136,62 +144,73 @@ const videoData = [
   },
 ];
 
-const items = [
-  {
-    img: "/Img/P-1.png",
-    content: "RESTORE YOUR RARE PICTURE",
-    buttonText: "Order Your Digital Painting",
-  },
-  {
-    img: "/Img/P-2.png",
-    content: "REJOICE YOUR MEMORIES OF YOUR KIDS",
-    buttonText: "Order Today!",
-  },
-  {
-    img: "/Img/P-3.png",
-    content: "RLIVE YOUR WEDDING DAY",
-    buttonText: "Explore Now",
-  },
-  {
-    img: "/Img/P-4.png",
-    content: "RETAIN YOUR FAMILY PHOTO",
-    buttonText: "Order Your Digital Painting",
-  },
-];
-
-const smallSlider1 = [
-  { img: "/Img/I-1.jpg" },
-  { img: "/Img/I-2.jpg" },
-  { img: "/Img/I-3.jpg" },
-  { img: "/Img/I-4.jpg" },
-  { img: "/Img/I-5.jpg" },
-  { img: "/Img/I-6.jpg" },
-  { img: "/Img/I-7.jpg" },
-  ,
-];
-
-const smallSlider2 = [
-  { img: "/Img/I-5.jpg" },
-  { img: "/Img/I-6.jpg" },
-  { img: "/Img/I-7.jpg" },
-  { img: "/Img/I-8.jpg" },
-  { img: "/Img/I-14.jpg" },
-  { img: "/Img/I-15.jpg" },
-];
-
-const smallSlider3 = [
-  { img: "/Img/I-10.jpg" },
-  { img: "/Img/I-11.jpg" },
-  { img: "/Img/I-12.jpg" },
-  { img: "/Img/I-13.jpg" },
-];
-
 const HomeScreen = () => {
+  const [product, SetProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const [section1Data, setSection1Data] = useState([]);
+  const [section2Data, setSection2Data] = useState([]);
+  const [section3Data, setSection3Data] = useState([]);
+  const [content, setContent] = useState(null);
+
+  // Get Product Data From BackEnd Server
+
+  console.log(section3Data, "section3Data--------------");
+
+  const GETProduct = async () => {
+    try {
+      setIsLoading(true);
+      const result = await apiHelper.ProductDetails();
+
+      if (result?.status === 200) {
+        SetProduct(result?.data?.Product);
+      } else {
+        setError("Failed to fetch product data.");
+      }
+    } catch (error) {
+      if (
+        error?.response &&
+        error?.response?.data &&
+        error?.response?.data.message
+      ) {
+        setError(error.response.data.message);
+        setError("An error occurred: " + error?.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    GETProduct();
+  }, []);
+
+  useEffect(() => {
+    const section1 = product?.filter((x) => x?.category?.name === "Section 1");
+    setSection1Data(section1);
+
+    const section2 = product?.filter((x) => x?.category?.name === "Section 2");
+    setSection2Data(section2);
+
+    const section3 = product?.filter((x) => x?.category?.name === "Section 3");
+    setSection3Data(section3);
+
+    const ContentPart = product?.filter(
+      (x) => x?.category?.name === "Content Part"
+    );
+    setContent(ContentPart);
+  }, [product]);
+
   return (
     <>
       {/* Section-1-----master Slider----------------------- */}
+
+      <Loader isLoading={isLoading} />
+      <MessageBox error={error} seterror={setError} />
+
       <div>
-        <Slider items={items} />
+        <Slider items={section1Data} />
       </div>
 
       {/* Section-2 ----------Product listing------------------*/}
@@ -203,26 +222,11 @@ const HomeScreen = () => {
           <br />
           <br />
           <br />
-          <h2>
-            WE
-            <br />
-            CREATE
-            <br />
-            BEAUTIFUL
-            <br />
-            WORKS
-            <br />
-            OF ART
-            <br />
-            FROM YOUR
-            <br />
-            FAVORITE PHOTOS
-          </h2>
+          <h2>{content && content[0]?.title}</h2>
 
           <div className="leftside-btn">
             <button className="left-side-paintBtn  masterButton">
-              {" "}
-              Paint My Picture
+              {content && content[0]?.Brand}
             </button>
           </div>
         </div>
@@ -231,42 +235,24 @@ const HomeScreen = () => {
 
         <div className="right-scrollable-section">
           <p>
-            OilPixel, a digital painting studio, paints your story on a blank
-            canvas, vividly manifesting every single bit of your persona. Our
-            digital brush strokes gracefully create the work of art- portrait
-            painting, photo restoration, photo finishing or photo manipulation,
-            bringing out your emotions dramatically. With the extensive
-            experience of a decade, our masterpieces captivate both your heart
-            and soul.
+            {extractTextFromHTML((content && content[0]?.description) || "")}
           </p>
 
-          <p>
-            Be it self portrait, couple portrait, child portrait, pet portrait,
-            festive paintings or like, our deft artist paint it to perfection,
-            bringing that beautiful smile on your face. Your every piece of art
-            is important to us. We make sure, it is safely and securely
-            delivered to your doorstep bringing that beautiful smile on your
-            face.
-          </p>
+          {/* right side small slider part */}
 
           {/* Sliders */}
+          {section2Data &&
+            section2Data?.map((x) => {
+              return (
+                <>
+                  <div className="smallSlider-division">
+                    <h4 className="ms-2 ">{x?.title}</h4>
 
-          <div className="smallSlider-division">
-            <h4 className="ms-2 ">Self portrait paintings</h4>
-
-            <SmallSlider images={smallSlider1} />
-          </div>
-
-          <div className="smallSlider-division">
-            <h4 className="ms-2">Children porttrait paintings</h4>
-
-            <SmallSlider images={smallSlider2} />
-          </div>
-
-          <div className="smallSlider-division">
-            <h4 className="ms-2">Photo Restoration</h4>
-            <SmallSlider images={smallSlider3} />
-          </div>
+                    <SmallSlider images={x?.RelevantImages} />
+                  </div>
+                </>
+              );
+            })}
         </div>
       </div>
 
@@ -275,14 +261,10 @@ const HomeScreen = () => {
       <div className="review-container">
         {/* Left Section */}
         <div className="review-left">
-          <h2>
-            Our customer
-            <br />
-            stories near to our heart
-          </h2>
+          <h2>{section3Data && section3Data[0]?.title}</h2>
 
           <div className="review-button-container">
-            <p>It keeps us motivated</p>
+            <p>{section3Data && section3Data[0]?.brand}</p>
 
             <button className="masterButton">Read More...</button>
           </div>
